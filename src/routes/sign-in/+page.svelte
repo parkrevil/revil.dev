@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { FloatingLabelInput, Helper, Button, A, Heading } from 'flowbite-svelte';
+  import iconGoogle from '$lib/assets/images/icon_google.svg';
+  import iconGithub from '$lib/assets/images/icon_github.svg';
 </script>
 
 <div class="flex h-full justify-center items-center">
@@ -26,13 +28,23 @@
 			</div>
 
 			<div class="space-y-1">
-				<Button type="submit" color="primary" class="w-full">이메일로 로그인</Button>
-				<Button type="button" color="light" class="w-full">Google 계정으로 로그인</Button>
-				<Button type="button" color="light" class="w-full">Github 계정으로 로그인</Button>
+				<Button type="submit" color="primary" class="w-full">
+          이메일로 로그인
+        </Button>
+				<Button type="button" color="light" class="w-full">
+          <img src={iconGoogle} alt="" width="24px" height="24px" class="mr-2">
+          Google 계정으로 로그인
+        </Button>
+				<Button type="button" color="light" class="w-full">
+          <img src={iconGithub} alt="" width="24px" height="24px" class="mr-2">
+          Github 계정으로 로그인
+        </Button>
 			</div>
 
       <div class="text-center">
-        <A href="/sign-up" class="font-semibold text-sm hover:underline">계정이 없으면 맹글면 되지</A>
+        <A href="/sign-up" class="text-sm">
+          계정이 없으면 맹글면 되지
+        </A>
       </div>
 		</form>
 	</div>
