@@ -5,6 +5,6 @@
 
 <Header></Header>
 
-<input type="range" min="0" max="100" value="40" class="range range-primary" />
-
-<slot></slot>
+<div class="absolute left-0 top-[4rem] w-full max-w-full h-[calc(100%-4rem)]">
+  <slot></slot>
+</div>
