@@ -1,46 +1,49 @@
 <script lang="ts">
-  import { Input, Label, Helper, Checkbox, Button, A } from 'flowbite-svelte';
+	import { FloatingLabelInput, Helper, Button, A, Heading } from 'flowbite-svelte';
 </script>
 
-<form>
-  <div class="grid gap-6 mb-6 md:grid-cols-2">
-    <div>
-      <Label for="first_name" class="mb-2">First name</Label>
-      <Input type="text" id="first_name" placeholder="John" required  />
-    </div>
-    <div>
-      <Label for="last_name" class="mb-2">Last name</Label>
-      <Input type="text" id="last_name" placeholder="Doe" required />
-    </div>
-    <div>
-      <Label for="company" class="mb-2">Company</Label>
-      <Input type="text" id="company" placeholder="Flowbite" required />
-    </div>
-    <div>
-      <Label for="phone" class="mb-2">Phone number</Label>
-      <Input type="tel" id="phone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
-    </div>
-    <div>
-      <Label for="website" class="mb-2">Website URL</Label>
-      <Input type="url" id="website" placeholder="flowbite.com" required />
-    </div>
-    <div>
-      <Label for="visitors" class="mb-2">Unique visitors (per month)</Label>
-      <Input type="number" id="visitors" placeholder="" required />
-    </div>
-  </div>
-  <div class="mb-6">
-    <Label for="email" class="mb-2">Email address</Label>
-    <Input type="email" id="email" placeholder="john.doe@company.com" required />
-  </div>
-  <div class="mb-6">
-    <Label for="password" class="mb-2">Password</Label>
-    <Input type="password" id="password" placeholder="•••••••••" required />
-  </div>
-  <div class="mb-6">
-    <Label for="confirm_password" class="mb-2">Confirm password</Label>
-    <Input type="password" id="confirm_password" placeholder="•••••••••" required />
-  </div>
-  <Checkbox class="mb-6 space-x-1" required>I agree with the <A href="/">terms and conditions</A>.</Checkbox>
-  <Button type="submit">Submit</Button>
-</form>
+<div class="flex h-full justify-center items-center">
+	<div class="w-72 max-w-50">
+		<Heading tag="h4">로그인하면<br />더 많은 것이 있지</Heading>
+
+		<form class="mt-10">
+			<div>
+				<FloatingLabelInput
+					type="text"
+					style="outlined"
+					name="username"
+					label="이메일"
+				/>
+			</div>
+
+			<div>
+				<FloatingLabelInput
+					type="password"
+					style="outlined"
+					name="password"
+					label="비밀번호"
+				/>
+			</div>
+
+			<div class="space-y-1">
+				<Button type="submit" color="primary" class="w-full">이메일로 로그인</Button>
+				<Button type="button" color="light" class="w-full">Google 계정으로 로그인</Button>
+				<Button type="button" color="light" class="w-full">Github 계정으로 로그인</Button>
+			</div>
+
+      <div class="text-center">
+        <A href="/sign-up" class="font-semibold text-sm hover:underline">계정이 없으면 맹글면 되지</A>
+      </div>
+		</form>
+	</div>
+</div>
+
+<style lang="scss">
+	form {
+		div {
+			&:not(:first-child) {
+				@apply mt-4;
+			}
+		}
+	}
+</style>
