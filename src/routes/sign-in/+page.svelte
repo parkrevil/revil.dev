@@ -32,11 +32,11 @@
           이메일로 로그인
         </Button>
 				<Button type="button" color="light" class="w-full">
-          <img src={iconGoogle} alt="" width="24px" height="24px" class="mr-2">
+          <img src={iconGoogle} alt="" width="20px" height="20px" class="mr-2">
           Google 계정으로 로그인
         </Button>
 				<Button type="button" color="light" class="w-full">
-          <img src={iconGithub} alt="" width="24px" height="24px" class="mr-2">
+          <img src={iconGithub} alt="" width="20px" height="20px" class="mr-2">
           Github 계정으로 로그인
         </Button>
 			</div>
