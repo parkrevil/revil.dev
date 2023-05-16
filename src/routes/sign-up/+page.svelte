@@ -33,8 +33,6 @@
       });
 		}
 	});
-
-  state.subscribe(r => console.log(r))
 </script>
 
 <div class="flex h-full justify-center items-center">
