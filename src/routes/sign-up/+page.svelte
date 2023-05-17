@@ -1,16 +1,20 @@
 <script lang="ts">
-	import { FloatingLabelInput, Helper, Radio, Button, A, Heading, Spinner } from 'flowbite-svelte';
+	import { FloatingLabelInput, Helper, Button, Heading, Spinner } from 'flowbite-svelte';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
 	import iconGoogle from '$lib/assets/images/icon_google.svg';
 	import iconGithub from '$lib/assets/images/icon_github.svg';
+	import { mutation } from 'svelte-apollo';
+	import { CreateUser, type CreateUserInput, type Input } from '$lib/graphql/mutations';
 
-	const { form, state, errors, isSubmitting, handleChange, handleSubmit } = createForm({
+  const createUser = mutation<boolean, Input<CreateUserInput>>(CreateUser);
+	const { form, errors, isSubmitting, handleChange, handleSubmit } = createForm({
 		initialValues: {
 			username: 'revil',
 			password: '1234',
 			confirmPassword: '1234',
 			nickname: 'test',
+      imageUrl: '',
 			email: 'revil.com@gmail.com'
 		},
 		validationSchema: yup.object().shape({
@@ -24,12 +28,16 @@
 			email: yup.string().email('이메일 제대로 쓰자')
 		}),
 		onSubmit: async (values) => {
-      return new Promise<void>(resolve => {
-        setTimeout(() => {
-          console.log(values);
-
-          resolve();
-        }, 2000)
+      const res = await createUser({
+        variables: {
+          input: {
+            username: values.username,
+            password: values.password,
+            nickname: values.nickname,
+            imageUrl: values.imageUrl,
+            email: values.email,
+          }
+        }
       });
 		}
 	});
@@ -135,7 +143,7 @@
 			<div class="space-y-1">
 				<Button type="submit" color="primary" class="w-full" disabled={$isSubmitting}>
           {#if $isSubmitting}
-            열심히 만들고 있다
+            <Spinner class="mr-3" size="4" color="white" />열심히 만들고 있다
           {:else}
             계정 만들기
           {/if}

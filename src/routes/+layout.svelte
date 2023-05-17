@@ -1,6 +1,15 @@
 <script>
 	import '../app.postcss';
+  import { PUBLIC_APOLLO_URI } from '$env/static/public';
+  import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+  import { setClient } from 'svelte-apollo';
 	import Header from '../lib/components/header.svelte';
+
+  const client = new ApolloClient({
+    uri: PUBLIC_APOLLO_URI,
+    cache: new InMemoryCache(),
+  });
+  setClient(client);
 </script>
 
 <Header />
